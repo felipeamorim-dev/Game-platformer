@@ -1,0 +1,667 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://Sprites/My_Kirby_sprites.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/tilemaps/_solo.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/player/kirby.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/outros/moeda.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/inimigos/inimigo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/outros/plataforma_movel.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "default"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 944, 160 ), Vector2( 944, 120 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "default"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1424, 80 ), Vector2( 1424, 144 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "default"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1472, 144 ), Vector2( 1568, 144 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "default"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1248, 160 ), Vector2( 1248, 112 ) ]
+}
+
+[node name="Fase 1" type="Node"]
+
+[node name="paralax" type="ParallaxBackground" parent="."]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll/offset = Vector2( 0, 0 )
+scroll/base_offset = Vector2( 0, 0 )
+scroll/base_scale = Vector2( 1, 1 )
+scroll/limit_begin = Vector2( 0, 0 )
+scroll/limit_end = Vector2( 0, 0 )
+scroll/ignore_camera_zoom = true
+
+[node name="layer" type="ParallaxLayer" parent="paralax"]
+
+editor/display_folded = true
+motion/scale = Vector2( 0.2, 0.2 )
+motion/offset = Vector2( 0, 0 )
+motion/mirroring = Vector2( 480, 0 )
+
+[node name="Sprite" type="Sprite" parent="paralax/layer"]
+
+transform/scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 176, 160, 130 )
+
+[node name="Sprite1" type="Sprite" parent="paralax/layer"]
+
+transform/pos = Vector2( 240, 0 )
+transform/scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 176, 160, 130 )
+
+[node name="solo" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -130880, 7, -65344, 7, 46, 6, 47, 6, 48, 6, 49, 6, 50, 6, 51, 6, 52, 6, 53, 6, 54, 6, 144, 6, 145, 6, 192, 7, 65582, 6, 65590, 6, 65680, 6, 65681, 6, 65695, 7, 65698, 7, 65699, 7, 65728, 7, 65732, 7, 65733, 7, 65734, 7, 131118, 6, 131126, 6, 131216, 6, 131217, 6, 131227, 7, 131228, 7, 131234, 7, 131235, 7, 131264, 7, 131269, 7, 131270, 7, 131305, 7, 131306, 7, 131307, 7, 131312, 7, 196654, 6, 196662, 6, 196747, 10, 196752, 6, 196753, 6, 196754, 7, 196755, 7, 196756, 7, 196759, 7, 196760, 7, 196770, 7, 196771, 7, 196800, 7, 196801, 7, 196805, 7, 196806, 7, 196841, 7, 196842, 7, 196843, 7, 196848, 7, 262190, 6, 262198, 6, 262288, 6, 262289, 6, 262306, 7, 262307, 7, 262336, 7, 262341, 7, 262342, 7, 262371, 10, 262377, 7, 262378, 7, 262379, 7, 262380, 7, 262384, 7, 327726, 6, 327747, 7, 327748, 7, 327766, 0, 327767, 8, 327768, 8, 327813, 10, 327824, 6, 327825, 6, 327842, 7, 327843, 7, 327872, 7, 327876, 7, 327877, 7, 327878, 7, 327913, 7, 327914, 7, 327915, 7, 327920, 7, 393237, 9, 393247, 9, 393249, 9, 393256, 0, 393257, 2, 393262, 6, 393287, 7, 393288, 7, 393299, 8, 393300, 0, 393301, 2, 393302, 3, 393359, 6, 393360, 6, 393361, 6, 393366, 7, 393378, 7, 393379, 7, 393408, 7, 393413, 7, 393414, 7, 393449, 7, 393450, 7, 393451, 7, 393455, 7, 393456, 7, 458772, 0, 458773, 1, 458774, 2, 458783, 0, 458784, 1, 458785, 2, 458792, 4, 458793, 5, 458798, 6, 458801, 6, 458802, 6, 458803, 6, 458804, 6, 458805, 6, 458806, 6, 458827, 7, 458836, 3, 458837, 4, 458838, 4, 458867, 0, 458868, 1, 458869, 2, 458896, 6, 458897, 6, 458914, 0, 458915, 1, 458916, 1, 458917, 1, 458918, 1, 458919, 1, 458920, 1, 458921, 1, 458922, 1, 458923, 1, 458924, 1, 458925, 1, 458926, 8, 458927, 8, 458928, 8, 458929, 8, 458930, 8, 458931, 0, 458932, 1, 458933, 1, 458934, 1, 458935, 1, 458936, 1, 458937, 1, 458938, 1, 458939, 1, 458940, 1, 458941, 2, 458944, 7, 458945, 7, 458949, 7, 458950, 7, 458964, 10, 458974, 10, 458985, 7, 458986, 7, 458987, 7, 458992, 7, 524293, 9, 524300, 9, 524302, 9, 524304, 9, 524313, 9, 524315, 9, 524325, 0, 524326, 1, 524327, 1, 524328, 1, 524329, 5, 524372, 3, 524373, 4, 524374, 4, 524411, 0, 524412, 1, 524413, 1, 524414, 1, 524415, 1, 524416, 1, 524417, 2, 524432, 6, 524433, 6, 524470, 7, 524480, 7, 524485, 7, 524486, 7, 524521, 7, 524522, 7, 524523, 7, 524528, 7, 589824, 0, 589825, 1, 589826, 1, 589827, 1, 589828, 1, 589829, 1, 589830, 2, 589831, 8, 589832, 8, 589833, 8, 589834, 8, 589835, 8, 589836, 0, 589837, 1, 589838, 1, 589839, 1, 589840, 1, 589841, 2, 589849, 0, 589850, 1, 589851, 2, 589861, 3, 589862, 4, 589863, 4, 589864, 4, 589865, 5, 589908, 3, 589909, 4, 589910, 4, 589928, 0, 589929, 1, 589930, 2, 589931, 8, 589932, 8, 589933, 0, 589934, 1, 589935, 2, 589947, 3, 589948, 4, 589949, 4, 589950, 4, 589951, 4, 589952, 4, 589953, 5, 589963, 10, 589977, 7, 590006, 7, 590008, 0, 590009, 1, 590010, 1, 590011, 1, 590012, 1, 590013, 1, 590014, 1, 590015, 1, 590016, 7, 590020, 7, 590021, 7, 590022, 7, 590030, 10, 590057, 7, 590058, 7, 590059, 7, 590060, 7, 655360, 3, 655361, 4, 655362, 4, 655363, 4, 655364, 4, 655365, 4, 655366, 5, 655372, 3, 655373, 4, 655374, 4, 655375, 4, 655376, 4, 655377, 5, 655397, 3, 655398, 4, 655399, 4, 655400, 4, 655401, 5, 655404, 0, 655405, 1, 655406, 2, 655407, 8, 655408, 8, 655409, 8, 655410, 8, 655411, 8, 655412, 8, 655413, 0, 655414, 1, 655415, 2, 655425, 7, 655428, 0, 655429, 1, 655430, 2, 655431, 8, 655432, 8, 655433, 0, 655434, 1, 655435, 2, 655444, 3, 655445, 4, 655446, 4, 655483, 3, 655484, 4, 655485, 4, 655486, 4, 655487, 4, 655488, 4, 655489, 5, 655525, 7, 655542, 7, 655557, 7, 655558, 7, 655577, 10, 655593, 7, 655594, 7, 655595, 7, 655615, 7, 720896, 3, 720897, 4, 720898, 4, 720899, 4, 720900, 4, 720901, 4, 720902, 5, 720908, 3, 720909, 4, 720910, 4, 720911, 4, 720912, 4, 720913, 5, 720933, 3, 720934, 4, 720935, 4, 720936, 4, 720937, 5, 720940, 3, 720941, 4, 720942, 5, 720949, 3, 720950, 4, 720951, 5, 720980, 3, 720981, 4, 720982, 4, 721019, 3, 721020, 4, 721021, 4, 721022, 4, 721023, 4, 721024, 4, 721025, 5, 721040, 6, 721041, 6, 721042, 6, 721045, 7, 721046, 7, 721078, 7, 721079, 0, 721080, 1, 721081, 1, 721082, 1, 721083, 1, 721084, 1, 721085, 1, 721086, 1, 721087, 1, 721088, 1, 721089, 1, 721090, 1, 721091, 1, 721092, 1, 721093, 1, 721094, 1, 721095, 1, 721096, 1, 721097, 1, 721098, 1, 721129, 7, 721130, 7, 721131, 7, 721134, 7, 721135, 7, 721136, 7, 721137, 7, 721138, 7, 721141, 10, 721144, 8, 721145, 8, 721146, 10, 721154, 0, 721155, 1, 721156, 1, 721157, 1, 721158, 1, 721159, 1, 721160, 1, 721161, 1, 721162, 1, 721163, 1, 721164, 1, 721165, 1, 721166, 1, 721167, 1, 721168, 1, 721169, 1, 721170, 1, 721171, 1, 721172, 1, 721173, 8, 721174, 8, 721175, 8, 721176, 8, 721177, 8, 721178, 8, 721179, 8, 721180, 8, 721181, 8, 721182, 0, 721183, 1, 721184, 1, 721185, 1, 721186, 1, 721187, 1, 721188, 1, 721189, 1, 721190, 1, 721191, 1, 721192, 1, 721193, 1, 721194, 1, 721195, 1, 721196, 1, 786469, 3, 786470, 4, 786471, 4, 786472, 4, 786473, 5, 786476, 3, 786477, 4, 786478, 5, 786485, 3, 786486, 4, 786487, 5, 786516, 3, 786517, 4, 786518, 4, 786555, 3, 786556, 4, 786557, 4, 786558, 4, 786559, 4, 786560, 4, 786561, 5, 786576, 6, 786577, 6, 786578, 6, 786665, 7, 786666, 7, 786667, 7, 786670, 7, 786671, 7, 786672, 7, 786673, 7, 786674, 7, 852052, 3, 852053, 4, 852054, 4, 852091, 3, 852092, 4, 852093, 4, 852094, 4, 852095, 4, 852096, 4, 852097, 5, 852112, 6, 852113, 6, 852114, 6, 852201, 7, 852202, 7, 852203, 7, 852208, 7, 852209, 7, 852210, 7, 917651, 8, 917652, 8, 917653, 8, 917654, 8, 917655, 8, 917656, 8, 917657, 8, 917658, 8, 917659, 8, 917660, 8, 917661, 8, 917662, 8, 917663, 8, 917664, 8, 917665, 8, 917666, 8, 917667, 8, 917668, 8, 917669, 8, 917670, 8, 917671, 8, 917672, 8, 917673, 8, 917674, 8, 917675, 8, 917676, 8, 917677, 8, 917678, 8, 917679, 8, 917680, 8, 917681, 8, 917682, 8, 917683, 8, 917684, 8, 917685, 8, 917686, 8, 917687, 8, 917688, 8, 917689, 8, 917690, 8, 917691, 8, 917692, 8, 917693, 8, 917694, 8, 917695, 8, 917696, 8, 917697, 8, 917698, 8, 917699, 8, 917700, 8, 917701, 8, 917702, 8, 917703, 8, 917704, 8, 917705, 8, 917706, 8, 917707, 8, 917708, 8, 917737, 7, 917738, 7, 917739, 7, 917744, 7, 917745, 7, 917746, 7, 983273, 7, 983274, 7, 983275, 7, 983280, 7, 983281, 7, 983282, 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="kirby" parent="." instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 40.8765, 86.9723 )
+
+[node name="camera" type="Camera2D" parent="kirby"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = 0
+limit/top = 0
+limit/right = 6000
+limit/bottom = 190
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 5.0
+drag_margin/left = 0.0
+drag_margin/top = 0.2
+drag_margin/right = 0.5
+drag_margin/bottom = 0.2
+
+[node name="moedas" type="Node" parent="."]
+
+editor/display_folded = true
+
+[node name="moeda" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 112, 112 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda1" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 128, 112 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda2" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 144, 112 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda3" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 160, 112 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda4" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 176, 112 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda5" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 192, 112 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda6" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 336, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda7" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 352, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda8" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 416, 128 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda9" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 432, 128 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda10" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 512, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda11" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 528, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda12" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 784, 64 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda13" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 800, 64 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda14" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 816, 64 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda15" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 832, 64 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda16" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 784, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda17" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 800, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda18" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 816, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda19" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 832, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda20" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 784, 48 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda21" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 800, 48 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda22" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 816, 48 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda23" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 832, 48 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda24" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1136, 144 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda25" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1152, 144 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda26" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1168, 144 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda27" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1088, 64 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda28" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1152, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda29" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1312, 64 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda30" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1328, 64 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda31" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1712, 128 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda32" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1728, 128 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda33" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1744, 128 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda34" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1856, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda35" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1872, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda36" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2000, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda37" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2016, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda38" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2032, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda39" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2048, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda40" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2320, 160 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda41" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2336, 160 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda42" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2368, 32 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda43" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2352, 32 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda44" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2432, 32 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda45" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2496, 16 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda46" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2672, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda47" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2688, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda48" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2704, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda49" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2800, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda50" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2816, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda51" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2832, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda52" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2848, 96 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda53" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2944, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda54" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2960, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda55" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2976, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda56" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3040, 136 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda57" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3024, 136 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda58" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3008, 136 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda59" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2992, 136 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda60" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2976, 136 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda61" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2960, 136 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda62" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2960, 168 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda63" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2976, 168 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda64" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 2992, 168 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda65" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3008, 168 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda66" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3024, 168 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda67" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3040, 168 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda68" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3312, 112 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda69" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3328, 112 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda70" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3408, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda71" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3424, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda72" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3488, 128 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda73" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3504, 128 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda74" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3568, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda75" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3584, 80 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda76" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3648, 32 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda77" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3664, 32 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda78" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3968, 160 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda79" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 3984, 160 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="moeda80" parent="moedas" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 4000, 160 )
+transform/scale = Vector2( 0.5, 0.5 )
+
+[node name="inimigo" type="Node" parent="."]
+
+editor/display_folded = true
+
+[node name="inimigo" parent="inimigo" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 253.605, 131.21 )
+
+[node name="inimigo1" parent="inimigo" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 608.865, 120.098 )
+
+[node name="inimigo2" parent="inimigo" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 800, 152 )
+
+[node name="inimigo3" parent="inimigo" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1184, 151 )
+
+[node name="inimigo4" parent="inimigo" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1760, 136 )
+
+[node name="inimigo5" parent="inimigo" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 2768, 103 )
+
+[node name="plataformas_moveis" type="Node" parent="."]
+
+editor/display_folded = true
+
+[node name="plataforma_movel" parent="plataformas_moveis" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 944, 160 )
+
+[node name="anim" type="AnimationPlayer" parent="plataformas_moveis/plataforma_movel"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/default = SubResource( 1 )
+playback/active = true
+playback/speed = 0.3
+blend_times = [  ]
+autoplay = "default"
+
+[node name="plataforma_movel1" parent="plataformas_moveis" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 1424, 80 )
+
+[node name="anim" type="AnimationPlayer" parent="plataformas_moveis/plataforma_movel1"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/default = SubResource( 2 )
+playback/active = true
+playback/speed = 0.3
+blend_times = [  ]
+autoplay = "default"
+
+[node name="plataforma_movel 2" parent="plataformas_moveis" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 1472, 144 )
+
+[node name="anim" type="AnimationPlayer" parent="plataformas_moveis/plataforma_movel 2"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/default = SubResource( 3 )
+playback/active = true
+playback/speed = 0.3
+blend_times = [  ]
+autoplay = "default"
+
+[node name="plataforma_movel 3" parent="plataformas_moveis" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1248, 160 )
+
+[node name="anim" type="AnimationPlayer" parent="plataformas_moveis/plataforma_movel 3"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/default = SubResource( 4 )
+playback/active = true
+playback/speed = 0.3
+blend_times = [  ]
+autoplay = "default"
+
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://Scripts/kirby.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/My_Kirby_sprites.png" type="Texture" id=2]
@@ -10,8 +10,35 @@ extents = Vector2( 7.33938, 7.76669 )
 
 [sub_resource type="Animation" id=2]
 
-resource/name = "fall"
-length = 1.0
+resource/name = "dano"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:region_rect")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Rect2( 71, 44, 18, 19 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+
+resource/name = "dead"
+length = 0.6
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -19,10 +46,10 @@ tracks/0/path = NodePath("sprite:region_rect")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Rect2( 70, 44, 20, 20 ) ]
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 128, 16, 16 ), Rect2( 16, 128, 16, 16 ), Rect2( 32, 128, 16, 16 ), Rect2( 48, 128, 16, 16 ), Rect2( 64, 128, 16, 16 ), Rect2( 80, 128, 16, 16 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -38,12 +65,27 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Rect2( 6, 13, 20, 20 ) ]
+"values": [ Rect2( 70, 44, 20, 20 ) ]
 }
 
 [sub_resource type="Animation" id=4]
 
-resource/name = "jump"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Rect2( 6, 13, 20, 20 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
 length = 1.0
 loop = false
 step = 0.1
@@ -58,9 +100,8 @@ tracks/0/keys = {
 "values": [ Rect2( 38, 44, 20, 20 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource/name = "run"
 length = 0.4
 loop = true
 step = 0.1
@@ -74,11 +115,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ Rect2( 6, 13, 20, 20 ), Rect2( 38, 13, 20, 20 ), Rect2( 70, 13, 20, 20 ), Rect2( 6, 44, 20, 20 ) ]
 }
-
-[sub_resource type="RectangleShape2D" id=6]
-
-custom_solver_bias = 0.0
-extents = Vector2( 7.14826, 1.17736 )
 
 [sub_resource type="Animation" id=7]
 
@@ -97,6 +133,11 @@ tracks/0/keys = {
 "values": [ Vector2( 1.3, 0.6 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.14826, 1.17736 )
+
 [node name="kirby" type="KinematicBody2D"]
 
 input/pickable = false
@@ -110,7 +151,7 @@ script/script = ExtResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( -0.0937386, 8.5209 )
+transform/pos = Vector2( 0, 8 )
 texture = ExtResource( 2 )
 offset = Vector2( 0.0937386, -8.5209 )
 region = true
@@ -128,40 +169,16 @@ _update_shape_index = 0
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/fall = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/jump = SubResource( 4 )
-anims/run = SubResource( 5 )
+anims/dano = SubResource( 2 )
+anims/dead = SubResource( 9 )
+anims/fall = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/jump = SubResource( 5 )
+anims/run = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "idle"
-
-[node name="raycast" type="RayCast2D" parent="."]
-
-enabled = true
-cast_to = Vector2( 0, 12 )
-layer_mask = 2
-type_mask = 2
-
-[node name="pes" type="Area2D" parent="."]
-
-editor/display_folded = true
-input/pickable = true
-shapes/0/shape = SubResource( 6 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 9 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-
-[node name="shape" type="CollisionShape2D" parent="pes"]
-
-transform/pos = Vector2( 0, 9 )
-shape = SubResource( 6 )
-trigger = false
-_update_shape_index = 0
 
 [node name="animEFX" type="AnimationPlayer" parent="."]
 
@@ -174,6 +191,41 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="raycast" type="RayCast2D" parent="."]
+
+enabled = true
+cast_to = Vector2( 0, 12 )
+layer_mask = 2
+type_mask = 2
+
+[node name="pes" type="Area2D" parent="."]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 8 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 9 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="shape" type="CollisionShape2D" parent="pes"]
+
+transform/pos = Vector2( 0, 9 )
+shape = SubResource( 8 )
+trigger = false
+_update_shape_index = 0
+
+[node name="timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [connection signal="body_enter" from="pes" to="." method="_on_pes_body_enter"]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 
 

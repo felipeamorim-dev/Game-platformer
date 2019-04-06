@@ -23,9 +23,9 @@ func _fixed_process(delta):
 		set_animation()
 		
 		if get_pos().y > 260:
-			is_dead = true
+			dead()
 	else:
-		dead()
+		pass
 
 func flip_h():
 	
@@ -56,8 +56,10 @@ func set_animation():
 	animationControl(newAnim)
 
 func dead():
+	is_dead = true
 	motion = Vector2(0,0)
-	get_tree().change_scene("res://Scenes/Fases/Fase 1.tscn")
+	get_node("anim").play("dead")
+	get_node("timer").start()
 
 func change_floor():
 	if is_move_and_slide_on_floor() && !is_on_floor:
@@ -76,3 +78,6 @@ func _on_pes_body_enter( body ):
 		if body.has_method("_dano"):
 			body._dano(dano)
 		
+
+func _on_timer_timeout():
+	get_tree().change_scene("res://Scenes/Fases/Fase 1.tscn")

@@ -57,9 +57,11 @@ func set_animation():
 
 func dead():
 	is_dead = true
-	motion = Vector2(0,0)
-	get_node("anim").play("dead")
-	get_node("timer").start()
+	if game.vida_player > 0:
+		game.vida_player -= 1
+		motion = Vector2(0,0)
+		get_node("anim").play("dead")
+		get_node("timer").start()
 
 func change_floor():
 	if is_move_and_slide_on_floor() && !is_on_floor:

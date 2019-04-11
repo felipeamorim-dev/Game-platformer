@@ -15,4 +15,5 @@ func _ready():
 
 func set_vidaPlayer(valor):
 	vida_player = valor
+	emit_signal("carrega_vida")
 	pass

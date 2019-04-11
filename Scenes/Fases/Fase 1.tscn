@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
-[ext_resource path="res://Sprites/My_Kirby_sprites.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/tilemaps/_solo.tres" type="TileSet" id=2]
-[ext_resource path="res://Scenes/player/kirby.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/outros/moeda.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/inimigos/inimigo.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/inimigos/inimigo_2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/outros/plataforma_movel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/outros/HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/My_Kirby_sprites.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/tilemaps/_solo.tres" type="TileSet" id=3]
+[ext_resource path="res://Scenes/player/kirby.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/outros/moeda.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/inimigos/inimigo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/inimigos/inimigo_2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/outros/plataforma_movel.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -78,9 +79,10 @@ tracks/0/keys = {
 
 [node name="Fase 1" type="Node"]
 
+[node name="HUD" parent="." instance=ExtResource( 1 )]
+
 [node name="paralax" type="ParallaxBackground" parent="."]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -94,7 +96,6 @@ scroll/ignore_camera_zoom = true
 
 [node name="layer" type="ParallaxLayer" parent="paralax"]
 
-editor/display_folded = true
 motion/scale = Vector2( 0.2, 0.2 )
 motion/offset = Vector2( 0, 0 )
 motion/mirroring = Vector2( 480, 0 )
@@ -102,7 +103,7 @@ motion/mirroring = Vector2( 480, 0 )
 [node name="Sprite" type="Sprite" parent="paralax/layer"]
 
 transform/scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 region = true
 region_rect = Rect2( 0, 176, 160, 130 )
@@ -111,7 +112,7 @@ region_rect = Rect2( 0, 176, 160, 130 )
 
 transform/pos = Vector2( 240, 0 )
 transform/scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 region = true
 region_rect = Rect2( 0, 176, 160, 130 )
@@ -119,7 +120,7 @@ region_rect = Rect2( 0, 176, 160, 130 )
 [node name="solo" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell/size = Vector2( 16, 16 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -137,9 +138,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="kirby" parent="." instance=ExtResource( 3 )]
+[node name="kirby" parent="." instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform/pos = Vector2( 40.8765, 86.9723 )
 
 [node name="camera" type="Camera2D" parent="kirby"]
@@ -165,442 +165,444 @@ drag_margin/bottom = 0.2
 
 editor/display_folded = true
 
-[node name="moeda" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 112, 112 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda1" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda1" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 128, 112 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda2" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda2" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 144, 112 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda3" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda3" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 160, 112 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda4" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda4" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 176, 112 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda5" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda5" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 192, 112 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda6" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda6" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 336, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda7" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda7" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 352, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda8" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda8" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 416, 128 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda9" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda9" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 432, 128 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda10" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda10" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 512, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda11" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda11" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 528, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda12" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda12" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 784, 64 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda13" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda13" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 800, 64 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda14" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda14" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 816, 64 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda15" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda15" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832, 64 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda16" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda16" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 784, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda17" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda17" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 800, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda18" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda18" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 816, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda19" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda19" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda20" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda20" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 784, 48 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda21" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda21" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 800, 48 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda22" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda22" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 816, 48 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda23" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda23" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832, 48 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda24" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda24" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1136, 144 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda25" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda25" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1152, 144 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda26" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda26" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1168, 144 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda27" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda27" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1088, 64 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda28" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda28" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1152, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda29" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda29" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1312, 64 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda30" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda30" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1328, 64 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda31" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda31" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1712, 128 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda32" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda32" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1728, 128 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda33" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda33" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1744, 128 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda34" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda34" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1856, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda35" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda35" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1872, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda36" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda36" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2000, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda37" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda37" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2016, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda38" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda38" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2032, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda39" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda39" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2048, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda40" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda40" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2320, 160 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda41" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda41" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2336, 160 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda42" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda42" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2368, 32 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda43" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda43" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2352, 32 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda44" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda44" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2432, 32 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda45" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda45" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2496, 16 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda46" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda46" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2672, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda47" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda47" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2688, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda48" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda48" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2704, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda49" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda49" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2800, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda50" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda50" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2816, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda51" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda51" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2832, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda52" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda52" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2848, 96 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda53" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda53" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2944, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda54" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda54" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2960, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda55" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda55" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2976, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda56" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda56" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3040, 136 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda57" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda57" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3024, 136 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda58" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda58" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3008, 136 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda59" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda59" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2992, 136 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda60" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda60" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2976, 136 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda61" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda61" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2960, 136 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda62" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda62" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2960, 168 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda63" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda63" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2976, 168 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda64" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda64" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 2992, 168 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda65" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda65" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3008, 168 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda66" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda66" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3024, 168 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda67" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda67" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3040, 168 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda68" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda68" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3312, 112 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda69" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda69" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3328, 112 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda70" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda70" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3408, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda71" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda71" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3424, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda72" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda72" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3488, 128 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda73" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda73" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3504, 128 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda74" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda74" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3568, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda75" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda75" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3584, 80 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda76" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda76" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3648, 32 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda77" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda77" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3664, 32 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda78" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda78" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3968, 160 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda79" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda79" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 3984, 160 )
 transform/scale = Vector2( 0.5, 0.5 )
 
-[node name="moeda80" parent="moedas" instance=ExtResource( 4 )]
+[node name="moeda80" parent="moedas" instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 4000, 160 )
 transform/scale = Vector2( 0.5, 0.5 )
 
 [node name="inimigo" type="Node" parent="."]
 
-[node name="inimigo" parent="inimigo" instance=ExtResource( 5 )]
+editor/display_folded = true
+
+[node name="inimigo" parent="inimigo" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 253.605, 131.21 )
 
-[node name="inimigo1" parent="inimigo" instance=ExtResource( 5 )]
+[node name="inimigo1" parent="inimigo" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 608.865, 120.098 )
 
-[node name="inimigo2" parent="inimigo" instance=ExtResource( 5 )]
+[node name="inimigo2" parent="inimigo" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 800, 152 )
 
-[node name="inimigo3" parent="inimigo" instance=ExtResource( 5 )]
+[node name="inimigo3" parent="inimigo" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1184, 151 )
 
-[node name="inimigo4" parent="inimigo" instance=ExtResource( 5 )]
+[node name="inimigo4" parent="inimigo" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1760, 136 )
 
-[node name="inimigo5" parent="inimigo" instance=ExtResource( 5 )]
+[node name="inimigo5" parent="inimigo" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 2768, 103 )
 
-[node name="inimigo_2" parent="inimigo" instance=ExtResource( 6 )]
+[node name="inimigo_2" parent="inimigo" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 1552, 112 )
 
-[node name="inimigo_3" parent="inimigo" instance=ExtResource( 6 )]
+[node name="inimigo_3" parent="inimigo" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 1568, 112 )
 
@@ -608,7 +610,7 @@ transform/pos = Vector2( 1568, 112 )
 
 editor/display_folded = true
 
-[node name="plataforma_movel" parent="plataformas_moveis" instance=ExtResource( 7 )]
+[node name="plataforma_movel" parent="plataformas_moveis" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 944, 160 )
@@ -624,7 +626,7 @@ playback/speed = 0.3
 blend_times = [  ]
 autoplay = "default"
 
-[node name="plataforma_movel1" parent="plataformas_moveis" instance=ExtResource( 7 )]
+[node name="plataforma_movel1" parent="plataformas_moveis" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 1424, 80 )
@@ -640,7 +642,7 @@ playback/speed = 0.3
 blend_times = [  ]
 autoplay = "default"
 
-[node name="plataforma_movel 2" parent="plataformas_moveis" instance=ExtResource( 7 )]
+[node name="plataforma_movel 2" parent="plataformas_moveis" instance=ExtResource( 8 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 1472, 144 )
@@ -656,8 +658,9 @@ playback/speed = 0.3
 blend_times = [  ]
 autoplay = "default"
 
-[node name="plataforma_movel 3" parent="plataformas_moveis" instance=ExtResource( 7 )]
+[node name="plataforma_movel 3" parent="plataformas_moveis" instance=ExtResource( 8 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 1248, 160 )
 
 [node name="anim" type="AnimationPlayer" parent="plataformas_moveis/plataforma_movel 3"]

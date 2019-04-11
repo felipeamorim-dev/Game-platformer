@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Sprites/My_Kirby_sprites.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/fonte.fnt" type="BitmapFont" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+resource/name = "vida"
+script/source = "extends Label
+
+
+
+func _ready():
+	game.connect(\"carrega_vida\", self, \"on_carrega_vida\")
+	pass
+
+func on_carrega_vida():
+	set_text(str(game.vida_player))"
 
 [node name="HUD" type="Node"]
 
@@ -57,6 +71,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script/script = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
